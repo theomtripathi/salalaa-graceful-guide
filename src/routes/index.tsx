@@ -90,7 +90,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient pt-28 pb-20 md:pt-32 md:pb-32">
       <Nav />
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-[48px]">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-4 px-6 md:grid-cols-2 md:gap-0 md:px-[48px]">
         <div className="relative z-10">
           <Stars />
           <p className="mt-3 text-sm font-medium text-cream/90">Trusted by Muslims worldwide</p>
@@ -108,10 +108,10 @@ function Hero() {
             src={arrow}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -right-12 top-[55%] hidden h-44 w-auto rotate-[-15deg] md:block lg:-right-20"
+            className="pointer-events-none absolute -right-32 top-[40%] hidden h-[22rem] w-auto rotate-[-15deg] md:block lg:-right-40"
           />
         </div>
-        <div className="relative flex justify-center md:justify-end">
+        <div className="relative flex justify-center md:-ml-12 md:justify-end">
           <div className="absolute -right-10 top-10 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
           <img src={heroPhone} alt="Salah Alarm app showing prayer times and next alarm" className="relative max-h-[640px] w-auto drop-shadow-2xl" />
         </div>
