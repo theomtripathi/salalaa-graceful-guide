@@ -90,7 +90,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient pt-28 pb-20 md:pt-32 md:pb-32">
       <Nav />
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-[48px]">
         <div className="relative z-10">
           <Stars />
           <p className="mt-3 text-sm font-medium text-cream/90">Trusted by Muslims worldwide</p>
