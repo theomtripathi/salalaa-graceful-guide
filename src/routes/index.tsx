@@ -111,7 +111,7 @@ function Hero() {
             className="pointer-events-none absolute -right-32 top-0 hidden h-[22rem] w-auto rotate-[-15deg] md:block lg:-right-40"
           />
         </div>
-        <div className="relative flex justify-center md:-ml-24 md:justify-end">
+        <div className="relative flex justify-center md:-ml-48 md:justify-start">
           <div className="absolute -right-10 top-10 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
           <img src={heroPhone} alt="Salah Alarm app showing prayer times and next alarm" className="relative max-h-[640px] w-auto drop-shadow-2xl" />
         </div>
