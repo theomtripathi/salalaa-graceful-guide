@@ -6,6 +6,7 @@ import featAlarm from "@/assets/feature-alarm.png";
 import featScan from "@/assets/feature-scan.png";
 import featTimes from "@/assets/feature-times.png";
 import featAll from "@/assets/feature-all.png";
+import arrow from "@/assets/arrow.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -103,30 +104,12 @@ function Hero() {
             <CTAButton size="lg" variant="light" />
             <span className="text-sm text-cream/70">iPhone</span>
           </div>
-          <svg
+          <img
+            src={arrow}
+            alt=""
             aria-hidden="true"
-            viewBox="0 0 240 160"
-            className="pointer-events-none absolute -right-16 top-[58%] hidden h-40 w-60 text-cream md:block lg:-right-24"
-            fill="none"
-          >
-            <path
-              d="M10 30 C 70 10, 140 20, 195 90"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeDasharray="6 7"
-            />
-            <path
-              d="M180 78 L198 94 L182 108"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <text x="20" y="20" fill="currentColor" className="font-display" fontSize="18" fontStyle="italic" fontWeight="600">
-              try it now
-            </text>
-          </svg>
+            className="pointer-events-none absolute -right-12 top-[55%] hidden h-44 w-auto rotate-[-15deg] md:block lg:-right-20"
+          />
         </div>
         <div className="relative flex justify-center md:justify-end">
           <div className="absolute -right-10 top-10 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
