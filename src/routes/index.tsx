@@ -6,6 +6,7 @@ import featAlarm from "@/assets/feature-alarm.png";
 import featScan from "@/assets/feature-scan.png";
 import featTimes from "@/assets/feature-times.png";
 import featAll from "@/assets/feature-all.png";
+import arrow from "@/assets/arrow.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
