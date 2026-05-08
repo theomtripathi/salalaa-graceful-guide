@@ -321,9 +321,18 @@ function Footer() {
   );
 }
 
+function AnnouncementBar() {
+  return (
+    <div className="bg-deep-green text-cream text-center text-sm py-2.5 px-4 font-medium">
+      <span className="text-gold">❤</span> 100% of proceeds going to victims of the war
+    </div>
+  );
+}
+
 function Index() {
   return (
     <main className="min-h-screen bg-cream">
+      <AnnouncementBar />
       <Hero />
       <Stats />
       <FeatureRow image={featAlarm} eyebrow="Strict mode" title={<>Alarm rings until <br />you scan your mat.</>} description="No more silencing Fajr and going back to sleep. The alarm only stops once your camera sees your janamaz." />
