@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Salah Alarm rings until you scan your prayer mat. Build the habit Allah loves most. Download on the App Store.">
+    <meta property="og:title" content="Salah Alarm — Prayer alarm that won't let you miss Salah">
+    <meta property="og:description" content="The alarm app that won't let you miss Salah. Scan-to-dismiss, accurate prayer times, Qibla, Quran.">
+    <title>Salah Alarm — The alarm app that won't let you miss Salah</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        /* CSS Variables */
+        :root {
+            --radius: 1rem;
+            --background: oklch(0.965 0.018 95);
+            --foreground: oklch(0.27 0.08 155);
+            --cream: oklch(0.965 0.018 95);
+            --deep-green: oklch(0.32 0.09 152);
+            --forest: oklch(0.42 0.13 152);
+            --emerald: oklch(0.58 0.17 152);
+            --gold: oklch(0.78 0.15 82);
+            --gradient-hero: linear-gradient(160deg, oklch(0.27 0.08 152) 0%, oklch(0.34 0.10 152) 60%, oklch(0.40 0.12 150) 100%);
+            --gradient-gold: linear-gradient(135deg, oklch(0.82 0.16 85), oklch(0.72 0.17 75));
+            --shadow-soft: 0 30px 60px -20px oklch(0.27 0.08 152 / 0.35);
+            --shadow-card: 0 20px 40px -20px oklch(0.27 0.08 152 / 0.18);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--cream);
+            color: var(--deep-green);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Inter', system-ui, sans-serif;
+            letter-spacing: -0.03em;
+            font-weight: 800;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1344px;
+            margin: 0 auto;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-12 { gap: 3rem; }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 { grid-template-columns: 1fr; }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+        .py-28 { padding-top: 7rem; padding-bottom: 7rem; }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-5 { margin-top: 1.25rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-10 { margin-top: 2.5rem; }
+        .mt-14 { margin-top: 3.5rem; }
+
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-14 { margin-bottom: 3.5rem; }
+
+        .text-center { text-align: center; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-6xl { font-size: 3.75rem; }
+        .text-7xl { font-size: 4.5rem; }
+
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .font-extrabold { font-weight: 800; }
+
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+
+        .text-cream { color: var(--cream); }
+        .text-deep-green { color: var(--deep-green); }
+        .text-gold { color: var(--gold); }
+
+        .bg-cream { background-color: var(--cream); }
+        .bg-white { background-color: white; }
+        .bg-deep-green { background-color: var(--deep-green); }
+        .bg-hero-gradient { background: var(--gradient-hero); }
+        .bg-gold-gradient { background: var(--gradient-gold); }
+
+        .rounded-full { border-radius: 9999px; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-3xl { border-radius: 1.5rem; }
+
+        .border { border: 1px solid currentColor; }
+        .border-cream { border-color: var(--cream); }
+
+        .shadow-card { box-shadow: var(--shadow-card); }
+        .drop-shadow-2xl { filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15)); }
+
+        .opacity-80 { opacity: 0.8; }
+        .opacity-70 { opacity: 0.7; }
+        .opacity-60 { opacity: 0.6; }
+        .opacity-40 { opacity: 0.4; }
+
+        .max-w-md { max-width: 28rem; }
+        .max-w-xl { max-width: 36rem; }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-5xl { max-width: 64rem; }
+        .max-w-7xl { max-width: 80rem; }
+
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .inset-x-10 { left: 2.5rem; right: 2.5rem; }
+        .bottom-0 { bottom: 0; }
+        .left-0 { left: 0; }
+        .right-0 { right: 0; }
+        .top-0 { top: 0; }
+        .top-10 { top: 2.5rem; }
+        .-left-20 { left: -5rem; }
+        .-right-20 { right: -5rem; }
+        .-right-10 { right: -2.5rem; }
+
+        .h-4 { height: 1rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .h-9 { height: 2.25rem; }
+        .h-12 { height: 3rem; }
+        .h-72 { height: 18rem; }
+        .w-4 { width: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-9 { width: 2.25rem; }
+        .w-12 { width: 3rem; }
+        .w-72 { width: 18rem; }
+        .w-auto { width: auto; }
+
+        .max-h-600px { max-height: 600px; }
+        .max-h-640px { max-height: 640px; }
+
+        .overflow-hidden { overflow: hidden; }
+
+        .rounded-xl { border-radius: 0.75rem; }
+
+        .inline-flex { display: inline-flex; }
+        .inline-block { display: inline-block; }
+
+        .block { display: block; }
+
+        .hidden { display: none; }
+
+        .cursor-pointer { cursor: pointer; }
+
+        .transition-all { transition: all 0.3s ease; }
+        .transition-colors { transition: color 0.3s ease, background-color 0.3s ease; }
+        .transition-transform { transition: transform 0.3s ease; }
+
+        .hover\:scale-105:hover { transform: scale(1.05); }
+        .hover\:scale-\[1\.03\]:hover { transform: scale(1.03); }
+        .hover\:bg-\[oklch\(0\.27\ 0\.08\ 152\)\]:hover { background-color: oklch(0.27 0.08 152); }
+
+        .blur-3xl { filter: blur(64px); }
+
+        .list-none { list-style: none; }
+
+        .divide-y { border-bottom: 1px solid var(--deep-green); }
+        .divide-y > * + * { border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+        .object-cover { object-fit: cover; }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: var(--cream);
+            color: var(--deep-green);
+            text-align: center;
+            font-size: 0.875rem;
+            padding: 0.625rem 1rem;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            padding: 1.5rem;
+        }
+
+        nav-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .nav-logo img {
+            height: 2.25rem;
+            width: 2.25rem;
+            border-radius: 0.75rem;
+            object-fit: cover;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cream);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            background-color: var(--cream);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--deep-green);
+            transition: transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-hero);
+            padding-top: 7rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-grid {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1.5rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            height: 1.25rem;
+            width: 1.25rem;
+            color: var(--gold);
+            fill: var(--gold);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 0.95;
+            color: var(--cream);
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.125rem;
+            max-width: 28rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-card);
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button-dark {
+            background-color: var(--deep-green);
+            color: var(--cream);
+        }
+
+        .cta-button-dark:hover {
+            background-color: oklch(0.27 0.08 152);
+            transform: scale(1.03);
+        }
+
+        .cta-button-light {
+            background-color: var(--cream);
+            color: var(--deep-green);
+        }
+
+        .cta-button-light:hover {
+            background-color: white;
+            transform: scale(1.03);
+        }
+
+        .cta-button-small {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.75rem;
+        }
+
+        .apple-logo {
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1;
+        }
+
+        .button-subtext {
+            font-size: 0.625rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .hero-phone {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-phone-blob {
+            position: absolute;
+            right: -2.5rem;
+            top: 2.5rem;
+            height: 18rem;
+            width: 18rem;
+            border-radius: 50%;
+            background-color: rgba(120, 180, 120, 0.2);
+            filter: blur(64px);
+        }
+
+        .hero-phone img {
+            position: relative;
+            max-height: 640px;
+            width: auto;
+            filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3rem;
+            background-color: var(--cream);
+            clip-path: ellipse(80% 100% at 50% 100%);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--cream);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .stats-grid {
+            max-width: 64rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--deep-green);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(50, 144, 152, 0.6);
+            margin-top: 0.25rem;
+        }
+
+        /* Feature Rows */
+        .feature-row {
+            padding: 5rem 0;
+        }
+
+        .feature-row.bg-cream {
+            background-color: var(--cream);
+        }
+
+        .feature-row.bg-white {
+            background-color: white;
+        }
+
+        .feature-grid {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding: 0 1.5rem;
+            align-items: center;
+        }
+
+        .feature-grid.reverse {
+            direction: rtl;
+        }
+
+        .feature-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-image::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 2.5rem;
+            right: 2.5rem;
+            height: 66%;
+            border-radius: 3rem;
+            background-color: rgba(50, 144, 152, 0.05);
+        }
+
+        .feature-image img {
+            position: relative;
+            max-height: 600px;
+            width: auto;
+        }
+
+        .feature-content h2 {
+            font-size: 2.25rem;
+            color: var(--deep-green);
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            background-color: rgba(50, 144, 152, 0.1);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--deep-green);
+        }
+
+        .feature-description {
+            font-size: 1.125rem;
+            color: rgba(50, 144, 152, 0.7);
+            max-width: 28rem;
+            margin-top: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Feature Grid Section */
+        .feature-grid-section {
+            background-color: var(--deep-green);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            color: var(--cream);
+        }
+
+        .feature-grid-section h2 {
+            font-size: 2.25rem;
+            color: var(--cream);
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+        }
+
+        .feature-grid-section > div:first-child {
+            max-width: 42rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .feature-grid-section p {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gold);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+
+        .feature-card {
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.75rem;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card-icon {
+            display: flex;
+            height: 3rem;
+            width: 3rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background: var(--gradient-gold);
+        }
+
+        .feature-card-icon svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            color: var(--deep-green);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--cream);
+            padding: 6rem 0;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.25rem;
+            color: var(--deep-green);
+            max-width: 42rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .step-card {
+            border-radius: 1.5rem;
+            background-color: white;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .step-number {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-top: 0.75rem;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            color: rgba(50, 144, 152, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+            padding: 6rem 0;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .testimonials-header h2 {
+            font-size: 2.25rem;
+            color: var(--deep-green);
+            margin-top: 1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            border-radius: 1.5rem;
+            background-color: var(--cream);
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .testimonial-quote {
+            font-size: 1.125rem;
+            line-height: 1.625;
+            color: var(--deep-green);
+            margin-top: 1.25rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.875rem;
+            color: rgba(50, 144, 152, 0.6);
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-author strong {
+            color: var(--deep-green);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--cream);
+            padding: 6rem 0;
+        }
+
+        .faq h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--deep-green);
+        }
+
+        .faq-list {
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(50, 144, 152, 0.1);
+        }
+
+        .faq-item {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(50, 144, 152, 0.1);
+            cursor: pointer;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--deep-green);
+            user-select: none;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: rgba(50, 144, 152, 0.4);
+            transition: transform 0.3s;
+            margin-left: 1rem;
+        }
+
+        .faq-answer {
+            margin-top: 0.75rem;
+            color: rgba(50, 144, 152, 0.7);
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-hero);
+            padding: 7rem 1.5rem;
+        }
+
+        .final-cta-blob-1 {
+            position: absolute;
+            left: -5rem;
+            top: 2.5rem;
+            height: 18rem;
+            width: 18rem;
+            border-radius: 50%;
+            background-color: rgba(120, 180, 120, 0.2);
+            filter: blur(64px);
+        }
+
+        .final-cta-blob-2 {
+            position: absolute;
+            right: -5rem;
+            bottom: 2.5rem;
+            height: 18rem;
+            width: 18rem;
+            border-radius: 50%;
+            background-color: rgba(120, 180, 120, 0.2);
+            filter: blur(64px);
+        }
+
+        .final-cta-content {
+            position: relative;
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            line-height: 1.25;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 28rem;
+            margin: 0 auto 2.5rem;
+        }
+
+        .final-cta-features {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .final-cta-feature {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .final-cta-feature svg {
+            height: 1rem;
+            width: 1rem;
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-green);
+            padding: 3rem 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .footer-logo img {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 0.75rem;
+            object-fit: cover;
+        }
+
+        .footer-logo span {
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-grid.reverse {
+                direction: ltr;
+            }
+
+            .feature-grid.reverse > :first-child {
+                order: 2;
+            }
+
+            .final-cta h2 {
+                font-size: 3.75rem;
+            }
+
+            .footer-content {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .feature-content h2 {
+                font-size: 3rem;
+            }
+
+            .final-cta h2 {
+                font-size: 3.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span style="color: var(--gold);">❤</span> 100% of proceeds go to victims of the war
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <nav>
+            <div style="max-width: 80rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+                <div class="nav-logo">
+                    <svg class="nav-logo" viewBox="0 0 1024 1024" width="36" height="36" style="border-radius: 0.75rem;">
+                        <rect fill="#32 9098" width="1024" height="1024"/>
+                        <text x="512" y="600" font-size="500" font-weight="bold" text-anchor="middle" fill="white">SA</text>
+                    </svg>
+                    <span class="nav-logo-text">Salah Alarm</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how">How it works</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="nav-cta">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                    </svg>
+                    Download
+                </a>
+            </div>
+        </nav>
+
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p style="font-size: 0.875rem; font-weight: 500; color: rgba(255, 255, 255, 0.9); margin: 0.75rem 0 1.5rem 0;">Trusted by Muslims worldwide</p>
+                <h1>The alarm app<br>that won't let<br>you miss <span class="text-gold">Salah.</span></h1>
+                <p>Salah Alarm keeps ringing until you scan your prayer mat. Build the habit Allah loves most — five times a day, every day.</p>
+                <div class="hero-cta-group">
+                    <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-light">
+                        <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                        </svg>
+                        <div class="button-text">
+                            <span class="button-subtext">Download on the</span>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                    <span style="font-size: 0.875rem; color: rgba(255, 255, 255, 0.7);">iPhone</span>
+                </div>
+            </div>
+            <div class="hero-phone">
+                <div class="hero-phone-blob"></div>
+                <svg width="250" height="500" viewBox="0 0 280 580" style="max-height: 640px; width: auto; filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));">
+                    <rect x="20" y="20" width="240" height="540" rx="40" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+                    <rect x="30" y="35" width="220" height="510" rx="35" fill="#f5f5f5"/>
+                    <text x="140" y="280" font-size="28" font-weight="bold" text-anchor="middle" fill="#329098">SALAH</text>
+                    <text x="140" y="320" font-size="16" text-anchor="middle" fill="#666">Next: Dhuhr 12:30 PM</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">5x</div>
+                <div class="stat-label">prayers a day</div>
+            </div>
+            <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">never miss again</div>
+            </div>
+            <div>
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">App Store rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Rows -->
+    <section class="feature-row bg-cream">
+        <div class="feature-grid">
+            <div class="feature-image">
+                <svg width="280" height="400" viewBox="0 0 280 400" style="max-height: 600px; width: auto;">
+                    <rect x="20" y="20" width="240" height="360" rx="40" fill="#329098" stroke="#329098" stroke-width="2"/>
+                    <rect x="35" y="40" width="210" height="320" rx="30" fill="white"/>
+                    <text x="140" y="180" font-size="24" font-weight="bold" text-anchor="middle" fill="#329098">ALARM</text>
+                    <text x="140" y="210" font-size="12" text-anchor="middle" fill="#666">Scanning...</text>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <span class="feature-eyebrow">Strict mode</span>
+                <h2>Alarm rings until<br>you scan your mat.</h2>
+                <p class="feature-description">No more silencing Fajr and going back to sleep. The alarm only stops once your camera sees your janamaz.</p>
+                <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-dark">
+                    <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                    </svg>
+                    <div class="button-text">
+                        <span class="button-subtext">Download on the</span>
+                        <span>App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-row bg-white">
+        <div class="feature-grid reverse">
+            <div class="feature-image">
+                <svg width="280" height="400" viewBox="0 0 280 400" style="max-height: 600px; width: auto;">
+                    <rect x="20" y="20" width="240" height="360" rx="40" fill="#e8f5e9" stroke="#329098" stroke-width="2"/>
+                    <rect x="35" y="40" width="210" height="320" rx="30" fill="white"/>
+                    <text x="140" y="180" font-size="20" font-weight="bold" text-anchor="middle" fill="#329098">📿 SCAN</text>
+                    <text x="140" y="210" font-size="12" text-anchor="middle" fill="#666">Prayer Mat Detected</text>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <span class="feature-eyebrow">The habit</span>
+                <h2>Scan, then pray.<br>Build what Allah loves.</h2>
+                <p class="feature-description">A small ritual that makes a big difference. Point. Confirm. Stand. Pray.</p>
+                <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-dark">
+                    <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                    </svg>
+                    <div class="button-text">
+                        <span class="button-subtext">Download on the</span>
+                        <span>App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-row bg-cream">
+        <div class="feature-grid">
+            <div class="feature-image">
+                <svg width="280" height="400" viewBox="0 0 280 400" style="max-height: 600px; width: auto;">
+                    <rect x="20" y="20" width="240" height="360" rx="40" fill="white" stroke="#329098" stroke-width="2"/>
+                    <rect x="35" y="40" width="210" height="320" rx="30" fill="#f0f9ff"/>
+                    <text x="140" y="150" font-size="16" font-weight="bold" text-anchor="middle" fill="#329098">Prayer Times</text>
+                    <text x="140" y="180" font-size="12" text-anchor="middle" fill="#666">Fajr: 5:00 AM</text>
+                    <text x="140" y="200" font-size="12" text-anchor="middle" fill="#666">Dhuhr: 12:30 PM</text>
+                    <text x="140" y="220" font-size="12" text-anchor="middle" fill="#666">Asr: 3:45 PM</text>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <span class="feature-eyebrow">Prayer history</span>
+                <h2>Track every<br>prayer.</h2>
+                <p class="feature-description">See your streaks, weekly and monthly progress, and stay accountable to yourself.</p>
+                <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-dark">
+                    <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                    </svg>
+                    <div class="button-text">
+                        <span class="button-subtext">Download on the</span>
+                        <span>App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-row bg-white">
+        <div class="feature-grid reverse">
+            <div class="feature-image">
+                <svg width="280" height="400" viewBox="0 0 280 400" style="max-height: 600px; width: auto;">
+                    <rect x="20" y="20" width="240" height="360" rx="40" fill="#329098" stroke="#329098" stroke-width="2"/>
+                    <rect x="35" y="40" width="210" height="320" rx="30" fill="white"/>
+                    <text x="140" y="180" font-size="18" font-weight="bold" text-anchor="middle" fill="#329098">47 Day Streak</text>
+                    <text x="140" y="210" font-size="12" text-anchor="middle" fill="#666">Keep Going! 🔥</text>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <span class="feature-eyebrow">Stay accountable</span>
+                <h2>Build the habit<br>day by day.</h2>
+                <p class="feature-description">Daily logs, streaks, and a clear view of your prayer life — all in one place.</p>
+                <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-dark">
+                    <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                    </svg>
+                    <div class="button-text">
+                        <span class="button-subtext">Download on the</span>
+                        <span>App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid Section -->
+    <section id="features" class="feature-grid-section">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;">
+            <div>
+                <p>Everything you need</p>
+                <h2>One app. Every part of your prayer life.</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="13" r="8"></circle>
+                            <path d="M12 9V5M16 13h4M12 17v4M8 13H4"></path>
+                        </svg>
+                    </div>
+                    <h3>Strict prayer alarms</h3>
+                    <p>Rings until you physically prove you're praying.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Scan your janamaz</h3>
+                    <p>Camera-based dismiss — no thoughtless swipe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Accurate times</h3>
+                    <p>Precise prayer times for your exact location.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <path d="M12 8v-4"></path>
+                            <path d="M16 12h4"></path>
+                            <path d="M12 16v4"></path>
+                            <path d="M8 12H4"></path>
+                        </svg>
+                    </div>
+                    <h3>Qibla compass</h3>
+                    <p>Find the direction of the Kaaba instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Quran reader</h3>
+                    <p>Read & reflect, all in one app.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                            <path d="M9 15l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3>Streaks & history</h3>
+                    <p>Build the habit. Track every prayer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how" class="how-it-works">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;">
+            <h2>How Salah Alarm works.</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">Set your prayer alarms</h3>
+                    <p class="step-description">Salah Alarm auto-loads accurate times for your city.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">When the time comes — it rings</h3>
+                    <p class="step-description">And keeps ringing. No silent dismiss.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">Scan your prayer mat</h3>
+                    <p class="step-description">Point your camera at your janamaz to stop the alarm.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h3 class="step-title">Pray. Repeat. Build the streak.</h3>
+                    <p class="step-description">Five times a day, the habit Allah loves most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;">
+            <div class="testimonials-header">
+                <div class="stars" style="justify-content: center;">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <h2>Loved by the Ummah.</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-quote">Wallahi this app changed my Fajr. The scan thing actually works — I can't go back to sleep.</p>
+                    <div class="testimonial-author">
+                        <strong>Yusuf A.</strong> · London
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-quote">Finally a Muslim app that respects how serious prayer is. Beautiful design too.</p>
+                    <div class="testimonial-author">
+                        <strong>Aisha M.</strong> · Toronto
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-quote">My streak is at 47 days. I've never been this consistent in my life.</p>
+                    <div class="testimonial-author">
+                        <strong>Bilal R.</strong> · Dubai
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div style="max-width: 48rem; margin: 0 auto; padding: 0 1.5rem;">
+            <h2>Questions.</h2>
+            <div class="faq-list">
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-question">
+                        How does the scan-to-dismiss work?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <p class="faq-answer">Open your camera at your janamaz (prayer mat). Salah Alarm recognizes it and stops the alarm — proving you got out of bed.</p>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-question">
+                        Are prayer times accurate?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <p class="faq-answer">Yes. Salah Alarm uses your precise location and trusted calculation methods for Fajr, Dhuhr, Asr, Maghrib, and Isha.</p>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-question">
+                        Where do the proceeds go?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <p class="faq-answer">100% of proceeds go to victims of the war.</p>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-question">
+                        Is it on Android?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <p class="faq-answer">Currently iPhone only. Android is on the roadmap, in shaa Allah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="final-cta-blob-1"></div>
+        <div class="final-cta-blob-2"></div>
+        <div class="final-cta-content">
+            <h2>Don't miss another <span class="text-gold">Salah.</span></h2>
+            <p>Download Salah Alarm today and let your alarm be the start of your best habit.</p>
+            <a href="https://apps.apple.com/us/app/salahalarm-prayer-namaz-alarm/id6758457826" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-light" style="display: inline-flex; margin-top: 2.5rem;">
+                <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.65-2.323-7.34 0-4.31 2.797-6.6 5.552-6.6 1.4 0 2.59.93 3.487.93.853 0 2.2-1 3.778-1 .593 0 2.708.06 4.116 2.05-.121.075-2.43 1.418-2.43 4.235 0 3.27 2.86 4.42 2.93 4.43z"/>
+                </svg>
+                <div class="button-text">
+                    <span class="button-subtext">Download on the</span>
+                    <span>App Store</span>
+                </div>
+            </a>
+            <div class="final-cta-features">
+                <span class="final-cta-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    No ads
+                </span>
+                <span class="final-cta-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Private
+                </span>
+                <span class="final-cta-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    For the Ummah
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="32" height="32" viewBox="0 0 1024 1024" style="border-radius: 0.75rem;">
+                    <rect fill="#329098" width="1024" height="1024"/>
+                    <text x="512" y="750" font-size="700" font-weight="bold" text-anchor="middle" fill="white">SA</text>
+                </svg>
+                <span>Salah Alarm</span>
+            </div>
+            <p class="footer-text">© <span id="year"></span> Salah Alarm. Built with niyyah.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
