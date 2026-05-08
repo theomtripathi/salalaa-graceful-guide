@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Star, Bell, ScanLine, MapPin, BookOpen, Compass, Flame, Check } from "lucide-react";
+import { Star, ScanLine, MapPin, BookOpen, Compass, Flame, Check, Bell } from "lucide-react";
+import logo from "@/assets/logo.png";
 import heroPhone from "@/assets/hero.png";
 import featAlarm from "@/assets/feature-alarm.png";
 import featScan from "@/assets/feature-scan.png";
@@ -10,9 +11,9 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Salalaa — The alarm app that won't let you miss Salah" },
-      { name: "description", content: "Never miss a prayer again. Salalaa rings until you scan your prayer mat — building the habit Allah loves most. Download free on the App Store." },
-      { property: "og:title", content: "Salalaa — Prayer alarm that won't let you miss Salah" },
+      { title: "Salah Alarm — The alarm app that won't let you miss Salah" },
+      { name: "description", content: "Salah Alarm rings until you scan your prayer mat. Build the habit Allah loves most. Download on the App Store." },
+      { property: "og:title", content: "Salah Alarm — Prayer alarm that won't let you miss Salah" },
       { property: "og:description", content: "The alarm app that won't let you miss Salah. Scan-to-dismiss, accurate prayer times, Qibla, Quran." },
     ],
   }),
@@ -59,15 +60,17 @@ function Stars() {
   );
 }
 
+function Logo({ className = "h-9 w-9" }: { className?: string }) {
+  return <img src={logo} alt="Salah Alarm" className={`${className} rounded-xl object-cover`} />;
+}
+
 function Nav() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-20 px-6 py-6 md:px-12">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold-gradient">
-            <Bell className="h-5 w-5 text-deep-green" />
-          </div>
-          <span className="text-xl font-bold text-cream font-display">Salalaa</span>
+        <div className="flex items-center gap-2.5">
+          <Logo />
+          <span className="text-xl font-bold text-cream font-display">Salah Alarm</span>
         </div>
         <div className="hidden items-center gap-8 md:flex">
           <a href="#features" className="text-sm text-cream/80 hover:text-cream">Features</a>
@@ -94,16 +97,16 @@ function Hero() {
             The alarm app<br />that won't let<br />you miss <span className="text-gold">Salah.</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-cream/80">
-            Salalaa keeps ringing until you scan your prayer mat. Build the habit Allah loves most — five times a day, every day.
+            Salah Alarm keeps ringing until you scan your prayer mat. Build the habit Allah loves most — five times a day, every day.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <CTAButton size="lg" variant="light" />
-            <span className="text-sm text-cream/70">Free · iPhone</span>
+            <span className="text-sm text-cream/70">iPhone</span>
           </div>
         </div>
         <div className="relative flex justify-center md:justify-end">
           <div className="absolute -right-10 top-10 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
-          <img src={heroPhone} alt="Salalaa app showing prayer times and next alarm" className="relative max-h-[640px] w-auto drop-shadow-2xl" />
+          <img src={heroPhone} alt="Salah Alarm app showing prayer times and next alarm" className="relative max-h-[640px] w-auto drop-shadow-2xl" />
         </div>
       </div>
       <div className="absolute -bottom-1 left-0 right-0 h-12 bg-cream" style={{ clipPath: "ellipse(80% 100% at 50% 100%)" }} />
@@ -201,7 +204,7 @@ function FeatureGrid() {
 
 function HowItWorks() {
   const steps = [
-    { n: "01", t: "Set your prayer alarms", d: "Salalaa auto-loads accurate times for your city." },
+    { n: "01", t: "Set your prayer alarms", d: "Salah Alarm auto-loads accurate times for your city." },
     { n: "02", t: "When the time comes — it rings", d: "And keeps ringing. No silent dismiss." },
     { n: "03", t: "Scan your prayer mat", d: "Point your camera at your janamaz to stop the alarm." },
     { n: "04", t: "Pray. Repeat. Build the streak.", d: "Five times a day, the habit Allah loves most." },
@@ -209,7 +212,7 @@ function HowItWorks() {
   return (
     <section id="how" className="bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <h2 className="font-display max-w-2xl text-4xl font-extrabold text-deep-green md:text-5xl">How Salalaa works.</h2>
+        <h2 className="font-display max-w-2xl text-4xl font-extrabold text-deep-green md:text-5xl">How Salah Alarm works.</h2>
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
             <div key={s.n} className="rounded-3xl bg-white p-7 shadow-card">
@@ -255,9 +258,9 @@ function Testimonials() {
 
 function FAQ() {
   const qs = [
-    { q: "Is Salalaa free?", a: "Yes — download it free on the App Store." },
-    { q: "How does the scan-to-dismiss work?", a: "Open your camera at your janamaz (prayer mat). Salalaa recognizes it and stops the alarm — proving you got out of bed." },
-    { q: "Are prayer times accurate?", a: "Yes. Salalaa uses your precise location and trusted calculation methods for Fajr, Dhuhr, Asr, Maghrib, and Isha." },
+    { q: "How does the scan-to-dismiss work?", a: "Open your camera at your janamaz (prayer mat). Salah Alarm recognizes it and stops the alarm — proving you got out of bed." },
+    { q: "Are prayer times accurate?", a: "Yes. Salah Alarm uses your precise location and trusted calculation methods for Fajr, Dhuhr, Asr, Maghrib, and Isha." },
+    { q: "Where do the proceeds go?", a: "100% of proceeds go to victims of the war." },
     { q: "Is it on Android?", a: "Currently iPhone only. Android is on the roadmap, in shaa Allah." },
   ];
   return (
@@ -290,15 +293,15 @@ function FinalCTA() {
           Don't miss another <span className="text-gold">Salah.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-cream/80">
-          Download Salalaa today and let your alarm be the start of your best habit.
+          Download Salah Alarm today and let your alarm be the start of your best habit.
         </p>
         <div className="mt-10 flex justify-center">
           <CTAButton size="lg" variant="light" />
         </div>
         <div className="mt-8 flex items-center justify-center gap-6 text-sm text-cream/70">
-          <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> Free</span>
           <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> No ads</span>
           <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> Private</span>
+          <span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> For the Ummah</span>
         </div>
       </div>
     </section>
@@ -309,13 +312,11 @@ function Footer() {
   return (
     <footer className="bg-deep-green py-12 text-cream/70">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row md:px-12">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-gradient">
-            <Bell className="h-4 w-4 text-deep-green" />
-          </div>
-          <span className="font-bold text-cream">Salalaa</span>
+        <div className="flex items-center gap-2.5">
+          <Logo className="h-8 w-8" />
+          <span className="font-bold text-cream">Salah Alarm</span>
         </div>
-        <p className="text-sm">© {new Date().getFullYear()} Salalaa. Built with niyyah.</p>
+        <p className="text-sm">© {new Date().getFullYear()} Salah Alarm. Built with niyyah.</p>
       </div>
     </footer>
   );
@@ -323,8 +324,8 @@ function Footer() {
 
 function AnnouncementBar() {
   return (
-    <div className="bg-deep-green text-cream text-center text-sm py-2.5 px-4 font-medium">
-      <span className="text-gold">❤</span> 100% of proceeds going to victims of the war
+    <div className="bg-cream text-deep-green text-center text-sm py-2.5 px-4 font-semibold">
+      <span className="text-gold">❤</span> 100% of proceeds go to victims of the war
     </div>
   );
 }
@@ -337,8 +338,8 @@ function Index() {
       <Stats />
       <FeatureRow image={featAlarm} eyebrow="Strict mode" title={<>Alarm rings until <br />you scan your mat.</>} description="No more silencing Fajr and going back to sleep. The alarm only stops once your camera sees your janamaz." />
       <FeatureRow image={featScan} reverse bg="white" eyebrow="The habit" title={<>Scan, then pray.<br />Build what Allah loves.</>} description="A small ritual that makes a big difference. Point. Confirm. Stand. Pray." />
-      <FeatureRow image={featTimes} eyebrow="Prayer times" title={<>Never wonder<br />when to pray.</>} description="Accurate times for your city, every day, with the calculation method you trust." />
-      <FeatureRow image={featAll} reverse bg="white" eyebrow="All in one" title={<>Qibla. Quran.<br />Reminders.</>} description="Everything you need for your prayer life — beautifully designed and in one place." />
+      <FeatureRow image={featTimes} eyebrow="Prayer history" title={<>Track every<br />prayer.</>} description="See your streaks, weekly and monthly progress, and stay accountable to yourself." />
+      <FeatureRow image={featAll} reverse bg="white" eyebrow="Stay accountable" title={<>Build the habit<br />day by day.</>} description="Daily logs, streaks, and a clear view of your prayer life — all in one place." />
       <FeatureGrid />
       <HowItWorks />
       <Testimonials />
